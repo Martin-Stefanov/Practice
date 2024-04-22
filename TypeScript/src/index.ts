@@ -70,7 +70,7 @@ employee.name = 'Mosh';
 // union
 function kgToLbs(weight: number | string) {
     // Narrowing
-    if(typeof weight === 'number') {
+    if (typeof weight === 'number') {
         return weight * 2.2;
     } else {
         return parseInt(weight) * 2.2;
@@ -79,4 +79,62 @@ function kgToLbs(weight: number | string) {
 
 kgToLbs(10);
 kgToLbs("10kg");
+
+
+type Draggable = {
+    drag: () => void
+};
+
+type Resizeable = {
+    resize: () => void
+};
+
+// Type Intersection !
+type UIWidget = Draggable & Resizeable; // combines all the properties of Draggable and Resizeable
+
+let textBox: UIWidget = {
+    drag: () => { },
+    resize: () => { }
+}
+
+// Literal (exact, specific)
+type Quantity = 50 | 100;
+let quantity: Quantity = 50;
+
+type Metric = 'cm' | 'inch';
+const width: Metric = 'cm';
+
+
+function greet(name: string | null | undefined) {
+    if (name) {
+        console.log(name.toUpperCase());
+    } else {
+        console.log('Hola!');
+
+    }
+};
+
+type Customer = {
+    birthday?: Date
+}
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+// Optional propery access operator
+console.log(customer?.birthday?.getFullYear());
+
+
+// Optional element access operator
+
+//customers?.[0]
+
+
+//Optional call
+let log: any = null;
+log?.('a') // will execute only if log !== null & log !== undefined
+
+
 
