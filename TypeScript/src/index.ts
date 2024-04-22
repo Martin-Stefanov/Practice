@@ -28,3 +28,40 @@ const enum Size { Small = 1, Medium, Large };
 let mySize: Size = Size.Medium;
 console.log(mySize);
 
+
+function calculateTax(income: number, taxYear?: number): number { // optional parameter
+
+    if ((taxYear || 2022) < 2022) { // (taxYear || 2022) is needed, otherwise taxYear will be undefined when not passed as an argument
+        return income * 1.2;
+    } else {
+        return income * 1.3;
+    }
+}
+
+calculateTax(10_000, 2022);
+
+
+function calculateTax2(income: number, taxYear = 2022): number { // default value (better approach)
+
+    if (taxYear < 2022) {
+        return income * 1.2;
+    } else {
+        return income * 1.3;
+    }
+}
+
+calculateTax(10_000, 2022);
+
+
+let employee: {
+    readonly id: number,
+    name: string,
+    retire: (date: Date) => void
+} = {
+    id: 1,
+    name: '',
+    retire: (date: Date) => console.log(date)
+};
+employee.name = 'Mosh';
+
+
