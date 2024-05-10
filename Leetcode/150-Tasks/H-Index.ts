@@ -1,4 +1,4 @@
-const hIndex1: (citations: number[]) => number = (citations) => {
+const hIndex: (citations: number[]) => number = (citations) => {
     citations.sort((a, b) => b - a);
     let hIndex = 0;
     for (let i = 0; i < citations.length; i++) {
@@ -10,3 +10,5 @@ const hIndex1: (citations: number[]) => number = (citations) => {
     }
     return hIndex;
 };
+
+console.log(hIndex([3,0,6,1,5]));
